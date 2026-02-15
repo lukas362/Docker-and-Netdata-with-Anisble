@@ -12,6 +12,6 @@ This simple playbook allows for you to launch Docker with the help off Anisble
 2. How to stop - sudo systemctl stop docker
 
 ## Useful docker commands: 
-docker ps = List running containers
-docker images = List downloaded images
-docker run = Run a container
+- docker ps = List running containers
+- docker images = List downloaded images
+- docker run = Run a container
