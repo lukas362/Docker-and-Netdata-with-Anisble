@@ -1,0 +1,37 @@
+---
+# This simple Ansible playbook launches docker
+
+# How to use and stop this playbook: 
+
+# 1. How to run - ansible-playbook docker.yml -K
+# 2. How to stop - sudo systemctl stop docker
+
+# Useful docker commands: 
+# - docker ps   - List running containers
+# - docker images - List downloaded images
+# - docker run   - Run a container
+
+- name: Start Docker
+  hosts: localhost
+  connection: local
+  become: true  # Gives root privileges to be able to run docker
+  
+  tasks:
+    - name: Start Docker service
+      systemd:  # Start the program in question
+        name: docker
+        state: started
+        enabled: yes  # Start when booting
+    
+    - name: Verify that Docker is working
+      command: docker --version
+      register: docker_version  # Save the output of the previous command
+      changed_when: false  # Reads info and doesn't change anything
+    
+    - name: Display Docker status
+      debug:
+        msg: 
+          - "Docker is now running!"
+          - "{{ docker_version.stdout }}"
+
+
