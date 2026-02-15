@@ -1,7 +1,7 @@
 # Launch Docker with Ansible
 This simple playbook allows for you to launch Docker with the help off Anisble
 
-<img width="1537" height="319" alt="Skärmbild 2026-02-15 190909" src="https://github.com/user-attachments/assets/c923064b-16d8-43c6-9610-cdd57e2ce8d3" />
+<img width="540" height="315" alt="Skärmbild 2026-02-15 190958" src="https://github.com/user-attachments/assets/ae7e6da1-164b-4f9e-92be-4431c9eb843c" />
 
 ## Requirements
 - Linux with systemd
