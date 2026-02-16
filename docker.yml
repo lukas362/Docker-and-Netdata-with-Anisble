@@ -1,37 +1,44 @@
 ---
 # This simple Ansible playbook launches docker
 
-# How to use and stop this playbook: 
-
-# 1. How to run - ansible-playbook docker.yml -K
-# 2. How to stop - sudo systemctl stop docker
-
-# Useful docker commands: 
-# - docker ps   - List running containers
-# - docker images - List downloaded images
-# - docker run   - Run a container
-
 - name: Start Docker
   hosts: localhost
   connection: local
   become: true  # Gives root privileges to be able to run docker
-  
+
+  # vars used in this project
+  vars:
+    var_docker: "docker"
+    var_netdata: "netdata"
+
   tasks:
-    - name: Start Docker service
+    - name: Start Docker cli
       systemd:  # Start the program in question
-        name: docker
-        state: started
-        enabled: yes  # Start when booting
-    
+        name: "{{ var_docker }}" 
+        state: started # if Docker is on, then this command does nothing. If not on then this command starts Docker
+
     - name: Verify that Docker is working
-      command: docker --version
-      register: docker_version  # Save the output of the previous command
-      changed_when: false  # Reads info and doesn't change anything
-    
+      command: "{{ var_docker }} --version"
+      register: docker_output  # Save the output of the previous command
+      changed_when: false  # Won't change any files, only checks the version. Won't show as yellow, will show green 
+
     - name: Display Docker status
       debug:
-        msg: 
-          - "Docker is now running!"
-          - "{{ docker_version.stdout }}"
+        msg: |
+          Docker is now running!
+          {{ docker_output.stdout }}
 
-
+    - name: Netdata 
+      community.docker.docker_container:
+        name: "{{ var_netdata }}"
+        image: netdata/netdata:stable
+        state: started
+        ports:
+          - "19999:19999"
+        capabilities:
+          - SYS_PTRACE # Allows you to see which programs are taking up CPU, memory, etc. 
+        volumes:
+          - /proc:/host/proc:ro # Shows system info (cpu, ram, etc)
+          - /sys:/host/sys:ro # Shows hardware info (nic, temperature, disk space, etc) 
+          - /var/run/docker.sock:/var/run/docker.sock:ro # Lets it see the docker containers and their stats
+        
