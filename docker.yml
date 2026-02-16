@@ -5,22 +5,26 @@
   hosts: localhost
   connection: local
   become: true  # Gives root privileges to be able to run docker
-  
+
+# vars used in this project
+  vars:
+    var_docker: "docker"
+    
   tasks:
-    - name: Start Docker cli
+    - name: Start "{{ var_docker }}" cli
       systemd:  # Start the program in question
-        name: docker
+        name: "{{ var_docker }}" 
         state: started
         enabled: yes  # Start when booting
     
-    - name: Verify that Docker is working
-      command: docker --version
-      register: docker_version  # Save the output of the previous command
+    - name: Verify that "{{ var_docker }}" is working
+      command: "{{ var_docker }} --version"
+      register: docker_output  # Save the output of the previous command
       changed_when: false  # Reads info and doesn't change anything
     
-    - name: Display Docker status
+    - name: Display "{{ var_docker }}" status
       debug:
         msg: 
           - "Docker is now running!"
-          - "{{ docker_version.stdout }}"
+          - "{{ docker_output.stdout }}" # stdout =  standard output (pull the docker version from register)
           
