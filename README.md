@@ -19,5 +19,5 @@ This simple playbook allows you to launch Docker with the help of Anisble and us
 - docker run = Run a container
 
 ## Useful Netdata commands:
-- docker stop netdata = stops Netdata
-- docker logs -f netdata = shows realtime system usage of your system
+- docker stop netdata = stops Netdata 
+- docker logs -f netdata = shows realtime system usage of your system (might need to do ctrl + c, if it doesn't stop)
