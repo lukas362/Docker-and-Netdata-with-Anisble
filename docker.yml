@@ -7,7 +7,7 @@
   become: true  # Gives root privileges to be able to run docker
   
   tasks:
-    - name: Start Docker service
+    - name: Start Docker cli
       systemd:  # Start the program in question
         name: docker
         state: started
