@@ -24,9 +24,23 @@
 
     - name: Display Docker status
       debug:
-        msg: 
-          - "Docker is now running!"
-          - "{{ docker_output.stdout }}" # stdout = standard output (pull the docker version from register)
+        msg: |
+          Docker is now running!
+          {{ docker_output.stdout }}
+
+                                    ##        .            
+                      ## ## ##        ==            
+                   ## ## ## ##       ===            
+               /""""""""""""""""\___/ ===        
+          ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~   
+               \______ o           __/            
+                 \    \        __/             
+                  \____\______/                
+
+                  |          |
+               __ |  __   __ | _  __   _
+              /  \| /  \ /   |/  / _\ | 
+              \__/| \__/ \__ |\_ \__  |
 
     - name: Netdata 
       community.docker.docker_container:
