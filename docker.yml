@@ -28,20 +28,6 @@
           Docker is now running!
           {{ docker_output.stdout }}
 
-                                    ##        .            
-                      ## ## ##        ==            
-                   ## ## ## ##       ===            
-               /""""""""""""""""\___/ ===        
-          ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~   
-               \______ o           __/            
-                 \    \        __/             
-                  \____\______/                
-
-                  |          |
-               __ |  __   __ | _  __   _
-              /  \| /  \ /   |/  / _\ | 
-              \__/| \__/ \__ |\_ \__  |
-
     - name: Netdata 
       community.docker.docker_container:
         name: "{{ var_netdata }}"
