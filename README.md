@@ -10,7 +10,7 @@ This simple playbook allows you to launch Docker with the help of Anisble
 - Sudo privileges
 
 ## How to use and stop this playbook: 
-1. How to run - ansible-playbook docker.yml -K (-k = Ansible asks for your sudo password to run this playbook. Needed because Docker needs root access) 
+1. How to run - ansible-playbook docker.yml -K (-K = Ansible asks for your sudo password to run this playbook. Needed because Docker needs root access) 
 2. How to stop - sudo systemctl stop docker
 
 ## Useful docker commands: 
