@@ -20,4 +20,4 @@ This simple playbook allows you to launch Docker with the help of Anisble and us
 
 ## Useful Netdata commands:
 - docker stop netdata = stops Netdata
-- docker logs -f netdata = shows realtime logs of your system
+- docker logs -f netdata = shows realtime system usage of your system
