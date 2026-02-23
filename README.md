@@ -23,10 +23,23 @@ Needed because Docker needs root access)
 ```
 
 ## Useful docker commands: 
+```bash
 - docker ps = List running containers
+```
+
+```bash
 - docker images = List downloaded images
+```
+
+```bash
 - docker run = Run a container
+```
 
 ## Useful Netdata commands:
-- docker stop netdata = stops Netdata 
+```bash
+- docker stop netdata = stops Netdata
+```
+
+```bash
 - docker logs -f netdata = shows realtime system usage of your system (might need to do ctrl + c, if it doesn't stop)
+```
