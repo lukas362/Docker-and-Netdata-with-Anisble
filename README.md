@@ -9,9 +9,16 @@ This simple playbook allows you to launch Docker with the help of Anisble and us
 - Python + Python library (pip install docker) 
 
 ## How to use and stop this playbook: 
-1. How to run - ansible-playbook docker.yml -K (-K = Ansible asks for your sudo password to run this playbook. Needed because Docker needs root access) 
+```bash
+1. How to run - ansible-playbook docker.yml -K (-K = Ansible asks for your sudo password to run this playbook. Needed because Docker needs root access)
+```
+```bash
 2. How to stop - sudo systemctl stop docker
-3. Access Netdata monitor: http://localhost:19999 
+```
+
+```bash
+3. Access Netdata monitor: http://localhost:19999
+```
 
 ## Useful docker commands: 
 - docker ps = List running containers
